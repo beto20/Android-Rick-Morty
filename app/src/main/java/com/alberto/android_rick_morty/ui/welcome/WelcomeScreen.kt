@@ -23,7 +23,7 @@ fun WelcomeScreen(
     ) {
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(5.dp),
         ) {
             Header(
@@ -33,7 +33,7 @@ fun WelcomeScreen(
         }
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(top = 100.dp),
         ) {
 

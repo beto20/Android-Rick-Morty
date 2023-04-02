@@ -1,4 +1,4 @@
-package com.alberto.android_rick_morty.ui.episode
+package com.alberto.android_rick_morty.ui.character
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -16,10 +16,9 @@ import com.alberto.android_rick_morty.ui.components.ItemDetails
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
-fun EpisodeDetailScreen(
+fun CharacterDetailScreen(
     onNavigate: (UiEvent.Navigate) -> Unit
 ) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -30,15 +29,17 @@ fun EpisodeDetailScreen(
                 .fillMaxWidth()
         ) {
             Header(
-                title = "Episodios",
-                navigateTo = { onNavigate(UiEvent.Navigate(Route.EPISODE)) }
+                title = "Personajes",
+                navigateTo = { onNavigate(UiEvent.Navigate(Route.CHARACTER)) }
             )
         }
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 100.dp)
+                .padding(
+                    top = 100.dp,
+                )
         ) {
             Column(
                 modifier = Modifier
@@ -46,23 +47,10 @@ fun EpisodeDetailScreen(
                         vertical = 4.dp,
                         horizontal = 20.dp
                     )
+                    .fillMaxWidth()
             ) {
                 Text(
-                    text = "nombre: Pilot",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "salida: December 2, 2013",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "episodio: S01E01",
+                    text = "IMAGEN",
                     color = Color.Green,
                     fontSize = 28.sp,
                     fontFamily = FontFamily.SansSerif,
@@ -70,13 +58,65 @@ fun EpisodeDetailScreen(
                 )
             }
         }
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 300.dp)
+                .padding(top = 310.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(
+                        vertical = 4.dp,
+                        horizontal = 20.dp
+                    )
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "nombre: Rick Sanchez",
+                    color = Color.Green,
+                    fontSize = 28.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = "estado: Vivo",
+                    color = Color.Green,
+                    fontSize = 28.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = "especie: Humano",
+                    color = Color.Green,
+                    fontSize = 28.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = "genero: Masculino",
+                    color = Color.Green,
+                    fontSize = 28.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = "origen: Tierra",
+                    color = Color.Green,
+                    fontSize = 28.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 510.dp)
         ) {
             ItemDetails(
-                title = "PERSONAJES",
+                title = "EPISODIOS",
                 items = listOf("https://...", "https://...", "https://...")
             )
         }
@@ -85,6 +125,6 @@ fun EpisodeDetailScreen(
 
 @Preview
 @Composable
-fun EpisodeDetailScreenPreview() {
-    EpisodeDetailScreen({ })
+fun CharacterDetailScreenPreview() {
+    CharacterDetailScreen({ })
 }

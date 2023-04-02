@@ -25,7 +25,7 @@ fun CharacterScreen(
     ) {
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(5.dp),
         ) {
             Header(
@@ -35,12 +35,13 @@ fun CharacterScreen(
         }
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(top = 100.dp),
         ) {
             Grid(
                 context = LocalContext.current,
-                items = episodeList
+                items = episodeList,
+                navigateTo = {  onNavigate(UiEvent.Navigate(Route.CHARACTER_DETAIL)) }
             )
         }
     }

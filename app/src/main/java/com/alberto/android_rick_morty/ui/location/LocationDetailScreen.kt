@@ -1,4 +1,4 @@
-package com.alberto.android_rick_morty.ui.episode
+package com.alberto.android_rick_morty.ui.location
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -16,10 +16,9 @@ import com.alberto.android_rick_morty.ui.components.ItemDetails
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
-fun EpisodeDetailScreen(
+fun LocationDetailScreen(
     onNavigate: (UiEvent.Navigate) -> Unit
 ) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -30,8 +29,8 @@ fun EpisodeDetailScreen(
                 .fillMaxWidth()
         ) {
             Header(
-                title = "Episodios",
-                navigateTo = { onNavigate(UiEvent.Navigate(Route.EPISODE)) }
+                title = "Locaciones",
+                navigateTo = { onNavigate(UiEvent.Navigate(Route.LOCATION)) }
             )
         }
 
@@ -48,21 +47,21 @@ fun EpisodeDetailScreen(
                     )
             ) {
                 Text(
-                    text = "nombre: Pilot",
+                    text = "nombre: Tierra",
                     color = Color.Green,
                     fontSize = 28.sp,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Medium
                 )
                 Text(
-                    text = "salida: December 2, 2013",
+                    text = "tipo: Planeta",
                     color = Color.Green,
                     fontSize = 28.sp,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Medium
                 )
                 Text(
-                    text = "episodio: S01E01",
+                    text = "dimension: Dimension C-137",
                     color = Color.Green,
                     fontSize = 28.sp,
                     fontFamily = FontFamily.SansSerif,
@@ -85,6 +84,6 @@ fun EpisodeDetailScreen(
 
 @Preview
 @Composable
-fun EpisodeDetailScreenPreview() {
-    EpisodeDetailScreen({ })
+fun LocationDetailScreenPreview() {
+    LocationDetailScreen({ })
 }

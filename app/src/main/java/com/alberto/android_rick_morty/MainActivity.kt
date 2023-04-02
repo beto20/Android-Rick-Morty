@@ -9,8 +9,11 @@ import androidx.navigation.compose.rememberNavController
 import com.alberto.android_rick_morty.navigation.Route
 import com.alberto.android_rick_morty.navigation.navigate
 import com.alberto.android_rick_morty.ui.CommonDataClass
+import com.alberto.android_rick_morty.ui.character.CharacterDetailScreen
 import com.alberto.android_rick_morty.ui.character.CharacterScreen
+import com.alberto.android_rick_morty.ui.episode.EpisodeDetailScreen
 import com.alberto.android_rick_morty.ui.episode.EpisodeScreen
+import com.alberto.android_rick_morty.ui.location.LocationDetailScreen
 import com.alberto.android_rick_morty.ui.location.LocationScreen
 import com.alberto.android_rick_morty.ui.theme.AndroidRickMortyTheme
 import com.alberto.android_rick_morty.ui.welcome.WelcomeScreen
@@ -117,6 +120,33 @@ class MainActivity : ComponentActivity() {
                         CharacterScreen(
                             onNavigate = navController::navigate,
                             episodeList = list
+                        )
+                    }
+
+                    composable(
+                        route = Route.EPISODE_DETAIL,
+//                        arguments =
+                    ) {
+                        EpisodeDetailScreen(
+                            onNavigate = navController::navigate,
+                        )
+                    }
+
+                    composable(
+                        route = Route.LOCATION_DETAIL,
+//                        arguments =
+                    ) {
+                        LocationDetailScreen(
+                            onNavigate = navController::navigate,
+                        )
+                    }
+
+                    composable(
+                        route = Route.CHARACTER_DETAIL,
+//                        arguments =
+                    ) {
+                        CharacterDetailScreen(
+                            onNavigate = navController::navigate,
                         )
                     }
                 }

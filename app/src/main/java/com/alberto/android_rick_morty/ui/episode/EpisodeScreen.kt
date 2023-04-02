@@ -1,6 +1,8 @@
 package com.alberto.android_rick_morty.ui.episode
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -25,7 +27,7 @@ fun EpisodeScreen(
     ) {
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(5.dp),
         ) {
             Header(
@@ -35,12 +37,13 @@ fun EpisodeScreen(
         }
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(top = 100.dp),
         ) {
             Grid(
                 context = LocalContext.current,
-                items = episodeList
+                items = episodeList,
+                navigateTo = { onNavigate(UiEvent.Navigate(Route.EPISODE_DETAIL)) }
             )
         }
     }
