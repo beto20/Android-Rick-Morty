@@ -6,9 +6,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.alberto.android_rick_morty.navigation.Route
 import com.alberto.android_rick_morty.ui.CommonDataClass
-import com.alberto.android_rick_morty.ui.components.GridComponent
-import com.alberto.android_rick_morty.ui.components.HeaderComponent
+import com.alberto.android_rick_morty.ui.components.Grid
+import com.alberto.android_rick_morty.ui.components.Header
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
@@ -27,14 +28,17 @@ fun LocationScreen(
                 .fillMaxSize()
                 .padding(5.dp),
         ) {
-            HeaderComponent(title = "Locaciones")
+            Header(
+                title = "Locaciones",
+                navigateTo = { onNavigate(UiEvent.Navigate(Route.WELCOME)) }
+            )
         }
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 100.dp),
         ) {
-            GridComponent(
+            Grid(
                 context = LocalContext.current,
                 items = episodeList
             )

@@ -1,12 +1,10 @@
-package com.alberto.android_rick_morty.ui.components
+package com.alberto.android_rick_morty.ui.welcome.components
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
@@ -23,34 +21,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.alberto.android_rick_morty.ui.CommonDataClass
-import com.alberto.android_rick_morty.util.UiEvent
 
 
 @Composable
-fun LinearListComponent(
-    onClick: (UiEvent.Navigate) -> Unit,
-    items: List<CommonDataClass>,
-) {
-    LazyColumn(
-        modifier = Modifier
-            .padding(vertical = 4.dp)
-    ) {
-        items(
-            items = items
-        ) { item ->
-            VerticalList(
-                item = item,
-                onClick = { onClick }
-            )
-        }
-    }
-}
-
-@Composable
-private fun VerticalList(
-    onClick: (UiEvent.Navigate) -> Unit,
-    item: CommonDataClass
+fun CustomRow(
+    onClick: () -> Unit,
+    title: String,
+    description: String
 ) {
     val expanded = remember { mutableStateOf(false) }
 
@@ -74,7 +51,7 @@ private fun VerticalList(
         ) {
             Row(
                 modifier = Modifier
-                    .clickable { onClick }
+                    .clickable { onClick() }
             ) {
                 Column(
                     modifier = Modifier
@@ -83,14 +60,14 @@ private fun VerticalList(
                     verticalArrangement = Arrangement.Bottom
                 ) {
                     Text(
-                        text = item.name,
+                        text = title,
                         textAlign = TextAlign.Center,
                         color = Color.Green,
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Bold
                     )
                 }
-                OutlinedButton (
+                OutlinedButton(
                     onClick = { expanded.value = !expanded.value }
                 ) {
                     Text(if (expanded.value) "Show less" else "Show more")
@@ -103,7 +80,7 @@ private fun VerticalList(
                         bottom = extraPadding.coerceAtLeast(0.dp)
                     )
                 ) {
-                    Text(text = item.description)
+                    Text(text = description)
                 }
             }
         }
@@ -112,13 +89,10 @@ private fun VerticalList(
 
 @Preview
 @Composable
-fun LinearListComponentPreview() {
-
-    val list = mutableListOf(
-        CommonDataClass(name = "Episodios", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "Locaciones", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "Personajes", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+fun CustomRowPreview() {
+    CustomRow(
+        { },
+        title = "Locaciones",
+        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
     )
-
-    LinearListComponent({  }, list)
 }

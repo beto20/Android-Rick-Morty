@@ -1,5 +1,6 @@
 package com.alberto.android_rick_morty.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -15,8 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HeaderComponent(
-    title: String
+fun Header(
+    title: String,
+    navigateTo: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -32,7 +34,7 @@ fun HeaderComponent(
                 text = title,
                 textAlign = TextAlign.Center,
                 color = Color.Green,
-                fontSize = 20.sp,
+                fontSize = 28.sp,
                 modifier = Modifier.padding(top = 20.dp)
             )
         }
@@ -50,6 +52,7 @@ fun HeaderComponent(
                         start = 13.dp,
                         top = 20.dp
                     )
+                    .clickable { navigateTo() }
             )
         }
     }
@@ -57,6 +60,6 @@ fun HeaderComponent(
 
 @Preview
 @Composable
-fun HeaderComponentPreview() {
-    HeaderComponent("Rick & Morty diccionario")
+fun HeaderPreview() {
+    Header("Rick & Morty", { })
 }

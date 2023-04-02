@@ -4,18 +4,14 @@ import android.content.Context
 
 import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
@@ -24,7 +20,7 @@ import java.util.*
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
 @Composable
-fun GridComponent(
+fun Grid(
     context: Context,
     items: List<CommonDataClass>
 ) {
@@ -47,7 +43,6 @@ private fun Grid(
     context: Context,
     item: CommonDataClass
 ) {
-
     Card(
         onClick = {
             Toast.makeText(
@@ -75,14 +70,10 @@ private fun Grid(
     }
 }
 
-data class GridModal2(
-    val languageName: String,
-    val languageImg: ImageVector
-)
 
 @Preview
 @Composable
-fun DefaultPreviewGridComponent() {
+fun GridPreview() {
 
     val commonDataClassList = listOf(
         CommonDataClass("asd", "asd"),
@@ -91,5 +82,5 @@ fun DefaultPreviewGridComponent() {
         CommonDataClass("asd", "asd"),
     )
 
-    GridComponent(LocalContext.current, commonDataClassList)
+    Grid(LocalContext.current, commonDataClassList)
 }
