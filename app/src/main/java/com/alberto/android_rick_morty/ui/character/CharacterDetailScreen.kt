@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alberto.android_rick_morty.navigation.Route
+import com.alberto.android_rick_morty.ui.character.components.CharacterItems
 import com.alberto.android_rick_morty.ui.components.Header
 import com.alberto.android_rick_morty.ui.components.ItemDetails
 import com.alberto.android_rick_morty.util.UiEvent
@@ -72,41 +73,7 @@ fun CharacterDetailScreen(
                     )
                     .fillMaxWidth()
             ) {
-                Text(
-                    text = "nombre: Rick Sanchez",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "estado: Vivo",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "especie: Humano",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "genero: Masculino",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "origen: Tierra",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
+                CharacterItems(items = listOf("nombre: Rick Sanchez", "estado: Vivo", "especie: Humano", "genero: Masculino", "origen: Tierra"))
             }
         }
 

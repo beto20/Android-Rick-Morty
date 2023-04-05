@@ -1,18 +1,14 @@
 package com.alberto.android_rick_morty.ui.episode
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.alberto.android_rick_morty.navigation.Route
 import com.alberto.android_rick_morty.ui.components.Header
 import com.alberto.android_rick_morty.ui.components.ItemDetails
+import com.alberto.android_rick_morty.ui.episode.components.EpisodeItems
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
@@ -47,26 +43,8 @@ fun EpisodeDetailScreen(
                         horizontal = 20.dp
                     )
             ) {
-                Text(
-                    text = "nombre: Pilot",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "salida: December 2, 2013",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "episodio: S01E01",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
+                EpisodeItems(
+                    items = listOf("nombre: Pilot", "salida: December 2, 2013", "episodio: S01E01")
                 )
             }
         }

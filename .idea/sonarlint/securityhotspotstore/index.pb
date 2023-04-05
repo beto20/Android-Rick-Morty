@@ -7,3 +7,15 @@ r
 Bapp/src/main/java/com/alberto/android_rick_morty/ui/theme/Theme.kt,7\b\7bead132c0584b7f20fc5dc2230f5882eb95aaa7
 q
 Aapp/src/main/java/com/alberto/android_rick_morty/ui/theme/Type.kt,5\1\51cb1f7a801c7b5f99b47a4f5ad65a25557b727d
+v
+Fapp/src/main/java/com/alberto/android_rick_morty/ui/CommonDataClass.kt,0\a\0ad87219796e0d6d92f7e1dd487d7daec6eb1226
+p
+@app/src/main/java/com/alberto/android_rick_morty/util/UiEvent.kt,f\d\fd75426508ccac03dc28f3c912775cade11cd995
+x
+Happ/src/main/java/com/alberto/android_rick_morty/ui/components/Header.kt,9\9\99e4d0bcd802c65f4f38792f005ce06fcbf321a2
+
+Oapp/src/main/java/com/alberto/android_rick_morty/navigation/NavControllerExt.kt,9\8\9843adee4d0115a4dcac62568d398e0a4ba4f71e
+p
+@app/src/main/java/com/alberto/android_rick_morty/MainActivity.kt,8\0\80a4bfed79a049bfb0a6bc4b93e01866dcd220c1
+v
+Fapp/src/main/java/com/alberto/android_rick_morty/ui/components/Grid.kt,0\c\0cac96901e8f3ebc6346a93054709bf65cdd6875

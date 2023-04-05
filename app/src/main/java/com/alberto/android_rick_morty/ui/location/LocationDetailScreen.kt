@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.sp
 import com.alberto.android_rick_morty.navigation.Route
 import com.alberto.android_rick_morty.ui.components.Header
 import com.alberto.android_rick_morty.ui.components.ItemDetails
+import com.alberto.android_rick_morty.ui.location.components.LocationItems
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
@@ -46,27 +47,7 @@ fun LocationDetailScreen(
                         horizontal = 20.dp
                     )
             ) {
-                Text(
-                    text = "nombre: Tierra",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "tipo: Planeta",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = "dimension: Dimension C-137",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
-                )
+                LocationItems(items = listOf("nombre: Tierra", "tipo: Planeta", "dimension: Dimension C-137"))
             }
         }
         Row(
