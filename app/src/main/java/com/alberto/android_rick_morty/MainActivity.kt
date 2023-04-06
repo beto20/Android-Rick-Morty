@@ -6,17 +6,17 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.alberto.android_rick_morty.navigation.Route
-import com.alberto.android_rick_morty.navigation.navigate
-import com.alberto.android_rick_morty.ui.CommonDataClass
-import com.alberto.android_rick_morty.ui.character.CharacterDetailScreen
-import com.alberto.android_rick_morty.ui.character.CharacterScreen
-import com.alberto.android_rick_morty.ui.episode.EpisodeDetailScreen
-import com.alberto.android_rick_morty.ui.episode.EpisodeScreen
-import com.alberto.android_rick_morty.ui.location.LocationDetailScreen
-import com.alberto.android_rick_morty.ui.location.LocationScreen
-import com.alberto.android_rick_morty.ui.theme.AndroidRickMortyTheme
-import com.alberto.android_rick_morty.ui.welcome.WelcomeScreen
+import com.alberto.android_rick_morty.presentation.navigation.Route
+import com.alberto.android_rick_morty.presentation.navigation.navigate
+import com.alberto.android_rick_morty.presentation.ui.CommonDataClass
+import com.alberto.android_rick_morty.presentation.ui.character.CharacterDetailScreen
+import com.alberto.android_rick_morty.presentation.ui.character.CharacterScreen
+import com.alberto.android_rick_morty.presentation.ui.episode.EpisodeDetailScreen
+import com.alberto.android_rick_morty.presentation.ui.episode.EpisodeScreen
+import com.alberto.android_rick_morty.presentation.ui.location.LocationDetailScreen
+import com.alberto.android_rick_morty.presentation.ui.location.LocationScreen
+import com.alberto.android_rick_morty.presentation.ui.theme.AndroidRickMortyTheme
+import com.alberto.android_rick_morty.presentation.ui.welcome.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
