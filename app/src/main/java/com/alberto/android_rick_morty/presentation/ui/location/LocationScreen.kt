@@ -7,15 +7,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.alberto.android_rick_morty.presentation.navigation.Route
-import com.alberto.android_rick_morty.presentation.ui.CommonDataClass
 import com.alberto.android_rick_morty.presentation.ui.components.Grid
 import com.alberto.android_rick_morty.presentation.ui.components.Header
+import com.alberto.android_rick_morty.presentation.viewmodel.LocationViewModel
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
 fun LocationScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
-    episodeList: List<CommonDataClass>
+    state: LocationViewModel.LocationState
 ) {
 
     Box(
@@ -40,7 +40,7 @@ fun LocationScreen(
         ) {
             Grid(
                 context = LocalContext.current,
-                items = episodeList,
+                items = state.locations,
                 navigateTo = { onNavigate(UiEvent.Navigate(Route.LOCATION_DETAIL)) }
             )
         }
@@ -51,25 +51,7 @@ fun LocationScreen(
 @Composable
 fun EpisodeScreenPreview() {
 
-    val list = mutableListOf(
-        CommonDataClass(name = "mock 1","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 2","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 3","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-        CommonDataClass(name = "mock 4","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-    )
-
-    LocationScreen(
-        onNavigate = {},
-        episodeList = list
-    )
+//    LocationScreen(
+//        onNavigate = {},
+//    )
 }

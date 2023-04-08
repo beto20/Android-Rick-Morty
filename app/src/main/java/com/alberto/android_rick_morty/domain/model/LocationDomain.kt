@@ -1,9 +1,8 @@
 package com.alberto.android_rick_morty.domain.model
 
-
-data class EpisodeDomain(
+data class LocationDomain(
     override val id: String?,
     override val name: String?,
-    val airDate: String? = "",
-    val episode: String? = "",
+    val type: String?,
+    val dimension: String?,
 ): BaseDomain()
