@@ -14,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -21,6 +22,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
+import coil.size.Size
 import com.alberto.android_rick_morty.R
 import com.alberto.android_rick_morty.domain.model.BaseDomain
 import java.util.*
@@ -69,9 +73,9 @@ private fun Grid(
         Box {
             Image(
                 modifier = Modifier.fillMaxSize(),
-                painter = painterResource(id = R.drawable.rick_morty),
+                painter = validateExternalImage(item),
                 contentDescription = null,
-                contentScale = ContentScale.Fit
+                contentScale = ContentScale.Crop
             )
             Text(
                 text = item?.name.toString(),
@@ -90,11 +94,24 @@ private fun Grid(
     }
 }
 
+@Composable
+private fun validateExternalImage(item: BaseDomain?): Painter {
+    var painter = painterResource(id = R.drawable.rick_morty)
+    if (!item?.futureUse1.isNullOrEmpty()) {
+        painter = rememberAsyncImagePainter(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(item!!.futureUse1)
+                .size(Size.ORIGINAL)
+                .build()
+        )
+    }
+    return painter
+}
+
 
 @Preview
 @Composable
 fun GridPreview() {
-
 
     val baseDomainList = listOf(
         BaseDomain(id = "1", name = "Rick Sanchez"),

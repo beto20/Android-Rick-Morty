@@ -13,5 +13,6 @@ fun GetAllCharactersQuery.Result.toCharacterDomain(): CharacterDomain {
         gender = gender,
         origin = OriginDomain(origin?.name),
         image = image,
+        futureUse1 = image
     )
 }

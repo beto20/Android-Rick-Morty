@@ -8,6 +8,7 @@ fun GetAllLocationsQuery.Result.toLocationDomain(): LocationDomain {
         id = id,
         name = name,
         type = type,
-        dimension = dimension
+        dimension = dimension,
+        futureUse1 = ""
     )
 }

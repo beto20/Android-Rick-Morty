@@ -8,6 +8,7 @@ fun GetAllEpisodesQuery.Result.toEpisodeDomain(): EpisodeDomain {
         id = id,
         name = name,
         airDate = air_date,
-        episode = episode
+        episode = episode,
+        futureUse1 = ""
     )
 }
