@@ -1,15 +1,15 @@
 package com.alberto.android_rick_morty.presentation.ui.character
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.alberto.android_rick_morty.presentation.navigation.Route
 import com.alberto.android_rick_morty.presentation.ui.character.components.CharacterItems
@@ -20,9 +20,13 @@ import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
 fun CharacterDetailScreen(
-    state: CharacterViewModel.CharacterState,
+    characterId: String?,
     onNavigate: (UiEvent.Navigate) -> Unit
 ) {
+    val viewModel = hiltViewModel<CharacterViewModel>()
+    val state by viewModel.state.collectAsState()
+    viewModel.showCharacterDetails(characterId)
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -38,44 +42,31 @@ fun CharacterDetailScreen(
             )
         }
 
-        Row(
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(
-                    top = 100.dp,
+                    top = 80.dp,
                 )
+                .align(alignment = Alignment.TopCenter)
         ) {
-            Column(
+            AsyncImage(
+                model = state.characterSelected?.image,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .padding(
-                        vertical = 4.dp,
-                        horizontal = 20.dp
-                    )
-                    .fillMaxWidth()
-            ) {
-                AsyncImage(
-                    model = state.characterSelected?.image,
-                    contentDescription = null
-                )
-//                Text(
-//                    text = "IMAGEN",
-//                    color = Color.Green,
-//                    fontSize = 28.sp,
-//                    fontFamily = FontFamily.SansSerif,
-//                    fontWeight = FontWeight.Medium
-//                )
-            }
+                    .width(170.dp)
+                    .height(170.dp),
+            )
         }
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 310.dp)
+                .padding(top = 250.dp)
         ) {
             Column(
                 modifier = Modifier
                     .padding(
-                        vertical = 4.dp,
                         horizontal = 20.dp
                     )
                     .fillMaxWidth()
@@ -95,11 +86,11 @@ fun CharacterDetailScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 510.dp)
+                .padding(top = 470.dp)
         ) {
             ItemDetails(
                 title = "EPISODIOS",
-                items = listOf("https://...", "https://...", "https://...")
+                items = state.characterSelected?.episodesAppears
             )
         }
     }
@@ -108,5 +99,8 @@ fun CharacterDetailScreen(
 @Preview
 @Composable
 fun CharacterDetailScreenPreview() {
-//    CharacterDetailScreen({ })
+    CharacterDetailScreen(
+        "1",
+        { }
+    )
 }

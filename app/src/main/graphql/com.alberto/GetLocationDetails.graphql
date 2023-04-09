@@ -5,6 +5,7 @@ query getLocationDetails($id: ID!) {
         type
         dimension
         residents {
+            id
             name
             species
         }

@@ -3,9 +3,6 @@ package com.alberto.android_rick_morty
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,9 +18,6 @@ import com.alberto.android_rick_morty.presentation.ui.location.LocationDetailScr
 import com.alberto.android_rick_morty.presentation.ui.location.LocationScreen
 import com.alberto.android_rick_morty.presentation.ui.theme.AndroidRickMortyTheme
 import com.alberto.android_rick_morty.presentation.ui.welcome.WelcomeScreen
-import com.alberto.android_rick_morty.presentation.viewmodel.CharacterViewModel
-import com.alberto.android_rick_morty.presentation.viewmodel.EpisodeViewModel
-import com.alberto.android_rick_morty.presentation.viewmodel.LocationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,35 +42,23 @@ class MainActivity : ComponentActivity() {
                             onNavigate = navController::navigate,
                         )
                     }
-                    /*** FIRST VIEWS ***/
+                    /*** PRINCIPAL VIEWS ***/
                     composable(Route.EPISODE) {
-                        val viewModel = hiltViewModel<EpisodeViewModel>()
-                        val state by viewModel.state.collectAsState()
-
                         EpisodeScreen(
                             onNavigate = navController::navigate,
                             navController = navController,
-                            state = state
                         )
                     }
                     composable(Route.LOCATION) {
-                        val viewModel = hiltViewModel<LocationViewModel>()
-                        val state by viewModel.state.collectAsState()
-
                         LocationScreen(
                             onNavigate = navController::navigate,
                             navController = navController,
-                            state = state
                         )
                     }
                     composable(Route.CHARACTER) {
-                        val viewModel = hiltViewModel<CharacterViewModel>()
-                        val state by viewModel.state.collectAsState()
-
                         CharacterScreen(
                             onNavigate = navController::navigate,
                             navController = navController,
-                            state = state,
                         )
                     }
                     /*** DETAILS VIEWS ***/
@@ -88,17 +70,9 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     ) {
-                        val viewModel = hiltViewModel<EpisodeViewModel>()
-                        val state by viewModel.state.collectAsState()
-
-                        val episodeId = it.arguments?.getString("episodeId")
-
-                        if (episodeId != null) {
-                            viewModel.showEpisodeDetails(episodeId)
-                        }
-
+                        val episodeIdParam = it.arguments?.getString("episodeId")
                         EpisodeDetailScreen(
-                            state = state,
+                            episodeId = episodeIdParam,
                             onNavigate = navController::navigate,
                         )
                     }
@@ -110,17 +84,9 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     ) {
-                        val viewModel = hiltViewModel<LocationViewModel>()
-                        val state by viewModel.state.collectAsState()
-
-                        val locationId = it.arguments?.getString("locationId")
-
-                        if (locationId != null) {
-                            viewModel.showLocationDetails(locationId)
-                        }
-
+                        val locationIdParam = it.arguments?.getString("locationId")
                         LocationDetailScreen(
-                            state = state,
+                            locationId = locationIdParam,
                             onNavigate = navController::navigate,
                         )
                     }
@@ -132,17 +98,9 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     ) {
-                        val viewModel = hiltViewModel<CharacterViewModel>()
-                        val state by viewModel.state.collectAsState()
-
-                        val characterId = it.arguments?.getString("characterId")
-
-                        if (characterId != null) {
-                            viewModel.showCharacterDetails(characterId)
-                        }
-
+                        val characterIdParam = it.arguments?.getString("characterId")
                         CharacterDetailScreen(
-                            state = state,
+                            characterId = characterIdParam,
                             onNavigate = navController::navigate,
                         )
                     }

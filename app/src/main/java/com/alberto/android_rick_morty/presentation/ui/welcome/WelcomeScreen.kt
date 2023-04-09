@@ -14,7 +14,6 @@ import com.alberto.android_rick_morty.util.UiEvent
 fun WelcomeScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
 ) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -66,7 +65,6 @@ fun WelcomeScreen(
 @Preview
 @Composable
 fun EpisodeScreenPreview() {
-
     WelcomeScreen(
         onNavigate = {}
     )

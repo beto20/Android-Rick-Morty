@@ -34,12 +34,14 @@ class EpisodeViewModel @Inject constructor(
         }
     }
 
-    fun showEpisodeDetails(id: String) {
-        viewModelScope.launch {
-            _state.update {
-                it.copy(
-                    episodeSelected = getEpisodeDetails.invoke(id)
-                )
+    fun showEpisodeDetails(id: String?) {
+        if (id != null) {
+            viewModelScope.launch {
+                _state.update {
+                    it.copy(
+                        episodeSelected = getEpisodeDetails.invoke(id)
+                    )
+                }
             }
         }
     }

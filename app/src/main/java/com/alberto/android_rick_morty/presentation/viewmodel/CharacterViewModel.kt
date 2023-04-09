@@ -31,12 +31,14 @@ class CharacterViewModel @Inject constructor(
         }
     }
 
-    fun showCharacterDetails(id: String) {
-        viewModelScope.launch {
-            _state.update {
-                it.copy(
-                    characterSelected = getCharacterDetails.invoke(id)
-                )
+    fun showCharacterDetails(id: String?) {
+        if (id != null) {
+            viewModelScope.launch {
+                _state.update {
+                    it.copy(
+                        characterSelected = getCharacterDetails.invoke(id)
+                    )
+                }
             }
         }
     }

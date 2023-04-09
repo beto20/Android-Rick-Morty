@@ -6,4 +6,5 @@ data class LocationDomain(
     override val futureUse1: String?,
     val type: String?,
     val dimension: String?,
+    val residents: List<CharacterDomain?>?
 ): BaseDomain()

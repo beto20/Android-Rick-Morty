@@ -32,12 +32,14 @@ class LocationViewModel @Inject constructor(
         }
     }
 
-    fun showLocationDetails(id: String) {
-        viewModelScope.launch {
-            _state.update {
-                it.copy(
-                    locationSelected = getLocationDetails.invoke(id)
-                )
+    fun showLocationDetails(id: String?) {
+        if (id != null) {
+            viewModelScope.launch {
+                _state.update {
+                    it.copy(
+                        locationSelected = getLocationDetails.invoke(id)
+                    )
+                }
             }
         }
     }

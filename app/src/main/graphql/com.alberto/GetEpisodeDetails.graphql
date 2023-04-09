@@ -5,6 +5,7 @@ query getEpisodeDetails($id: ID!) {
         air_date
         episode
         characters {
+            id
             name
             species
         }

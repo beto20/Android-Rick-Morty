@@ -7,4 +7,5 @@ data class EpisodeDomain(
     override val futureUse1: String?,
     val airDate: String? = "",
     val episode: String? = "",
+    val charactersInEpisode: List<CharacterDomain?>?
 ): BaseDomain()

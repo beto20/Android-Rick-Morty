@@ -2,10 +2,13 @@ package com.alberto.android_rick_morty.presentation.ui.location
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.alberto.android_rick_morty.presentation.navigation.Route
 import com.alberto.android_rick_morty.presentation.ui.components.Grid
@@ -17,8 +20,9 @@ import com.alberto.android_rick_morty.util.UiEvent
 fun LocationScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
     navController: NavController,
-    state: LocationViewModel.LocationState
 ) {
+    val viewModel = hiltViewModel<LocationViewModel>()
+    val state by viewModel.state.collectAsState()
 
     Box(
         modifier = Modifier
@@ -53,7 +57,6 @@ fun LocationScreen(
 @Preview
 @Composable
 fun EpisodeScreenPreview() {
-
 //    LocationScreen(
 //        onNavigate = {},
 //    )
