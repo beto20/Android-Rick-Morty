@@ -1,8 +1,6 @@
 package com.alberto.android_rick_morty.dataexternal.graphql
 
-import com.alberto.GetAllCharactersQuery
-import com.alberto.GetAllEpisodesQuery
-import com.alberto.GetAllLocationsQuery
+import com.alberto.*
 import com.alberto.android_rick_morty.dataexternal.mapper.toCharacterDomain
 import com.alberto.android_rick_morty.dataexternal.mapper.toEpisodeDomain
 import com.alberto.android_rick_morty.dataexternal.mapper.toLocationDomain
@@ -46,5 +44,32 @@ class ApolloClientImpl(
             ?.results
             ?.map { it?.toCharacterDomain() }
             ?: emptyList()
+    }
+
+    override suspend fun getCharacterDetails(id: String): CharacterDomain? {
+        return apolloClient
+            .query(GetCharacterDetailsQuery(id))
+            .execute()
+            .data
+            ?.character
+            ?.toCharacterDomain()
+    }
+
+    override suspend fun getLocationDetails(id: String): LocationDomain? {
+        return apolloClient
+            .query(GetLocationDetailsQuery(id))
+            .execute()
+            .data
+            ?.location
+            ?.toLocationDomain()
+    }
+
+    override suspend fun getEpisodeDetails(id: String): EpisodeDomain? {
+        return apolloClient
+            .query(GetEpisodeDetailsQuery(id))
+            .execute()
+            .data
+            ?.episode
+            ?.toEpisodeDomain()
     }
 }

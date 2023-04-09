@@ -4,4 +4,5 @@ import com.alberto.android_rick_morty.domain.model.EpisodeDomain
 
 interface EpisodeService {
     suspend fun getAllEpisodes(): List<EpisodeDomain?>
+    suspend fun getEpisodeDetails(id: String): EpisodeDomain?
 }

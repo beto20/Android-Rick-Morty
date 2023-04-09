@@ -13,4 +13,7 @@ class CharacterServiceImpl @Inject constructor(
         return graphqlService.getAllCharacters()
     }
 
+    override suspend fun getCharacterDetails(id: String): CharacterDomain? {
+        return graphqlService.getCharacterDetails(id)
+    }
 }

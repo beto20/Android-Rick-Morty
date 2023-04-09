@@ -12,4 +12,7 @@ class CharacterRepository @Inject constructor(
         return characterService.getAllCharacters()
     }
 
+    suspend fun getCharacterDetails(id: String): CharacterDomain? {
+        return characterService.getCharacterDetails(id)
+    }
 }

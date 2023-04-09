@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
@@ -33,17 +34,20 @@ import java.util.*
 fun Grid(
     context: Context,
     items: List<BaseDomain?>,
-    navigateTo: () -> Unit,
+    route: String,
+    navController: NavController
 ) {
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.padding(10.dp)
     ) {
         items(items.size) {
-            Grid(
+            CustomOneGrid(
                 context = context,
                 item = items[it],
-                navigateTo = { navigateTo() }
+                route = route,
+                navController = navController
             )
         }
     }
@@ -51,17 +55,18 @@ fun Grid(
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun Grid(
+fun CustomOneGrid(
     context: Context,
     item: BaseDomain?,
-    navigateTo: () -> Unit,
+    route: String,
+    navController: NavController,
 ) {
     Card(
         onClick = {
-            navigateTo()
+            navController.navigate("$route/${item?.id}")
             Toast.makeText(
                 context,
-                item?.name + " selected..",
+                item?.id + " selected..",
                 Toast.LENGTH_SHORT
             ).show()
         },
@@ -108,7 +113,6 @@ private fun validateExternalImage(item: BaseDomain?): Painter {
     return painter
 }
 
-
 @Preview
 @Composable
 fun GridPreview() {
@@ -118,5 +122,5 @@ fun GridPreview() {
         BaseDomain(id = "2", name = "Morty Smith"),
     )
 
-    Grid(LocalContext.current, baseDomainList, {  })
+//    Grid(LocalContext.current, baseDomainList, {  })
 }

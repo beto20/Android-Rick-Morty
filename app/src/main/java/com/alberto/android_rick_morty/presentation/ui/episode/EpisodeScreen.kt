@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.alberto.android_rick_morty.presentation.navigation.Route
 import com.alberto.android_rick_morty.presentation.ui.components.Grid
 import com.alberto.android_rick_morty.presentation.ui.components.Header
@@ -15,6 +16,7 @@ import com.alberto.android_rick_morty.util.UiEvent
 @Composable
 fun EpisodeScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
+    navController: NavController,
     state: EpisodeViewModel.EpisodeState,
 ) {
 
@@ -41,7 +43,8 @@ fun EpisodeScreen(
             Grid(
                 context = LocalContext.current,
                 items = state.episodes,
-                navigateTo = { onNavigate(UiEvent.Navigate(Route.EPISODE_DETAIL)) }
+                navController = navController,
+                route = Route.EPISODE_DETAIL,
             )
         }
     }
@@ -51,9 +54,7 @@ fun EpisodeScreen(
 @Composable
 fun EpisodeScreenPreview() {
 
-
 //    EpisodeScreen(
 //        onNavigate = {},
-//
 //    )
 }

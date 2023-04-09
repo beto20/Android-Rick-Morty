@@ -11,4 +11,8 @@ class EpisodeRepository @Inject constructor(
     suspend fun getAllEpisodes(): List<EpisodeDomain?> {
         return episodeService.getAllEpisodes()
     }
+
+    suspend fun getEpisodeDetails(id: String): EpisodeDomain? {
+        return episodeService.getEpisodeDetails(id)
+    }
 }

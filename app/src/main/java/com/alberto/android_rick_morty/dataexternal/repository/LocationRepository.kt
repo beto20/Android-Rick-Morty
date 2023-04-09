@@ -8,4 +8,8 @@ class LocationRepository @Inject constructor(private val locationService: Locati
     suspend fun getAllLocations(): List<LocationDomain?> {
         return locationService.getAllLocations()
     }
+
+    suspend fun getLocationDetails(id: String): LocationDomain? {
+        return locationService.getLocationDetails(id)
+    }
 }

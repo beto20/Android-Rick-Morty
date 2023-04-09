@@ -9,10 +9,12 @@ import com.alberto.android_rick_morty.presentation.navigation.Route
 import com.alberto.android_rick_morty.presentation.ui.components.Header
 import com.alberto.android_rick_morty.presentation.ui.components.ItemDetails
 import com.alberto.android_rick_morty.presentation.ui.episode.components.EpisodeItems
+import com.alberto.android_rick_morty.presentation.viewmodel.EpisodeViewModel
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
 fun EpisodeDetailScreen(
+    state: EpisodeViewModel.EpisodeState,
     onNavigate: (UiEvent.Navigate) -> Unit
 ) {
 
@@ -44,7 +46,11 @@ fun EpisodeDetailScreen(
                     )
             ) {
                 EpisodeItems(
-                    items = listOf("nombre: Pilot", "salida: December 2, 2013", "episodio: S01E01")
+                    items = listOf(
+                        "nombre: ${state.episodeSelected?.name}",
+                        "salida: ${state.episodeSelected?.airDate}",
+                        "episodio: ${state.episodeSelected?.episode}"
+                    )
                 )
             }
         }
@@ -64,5 +70,5 @@ fun EpisodeDetailScreen(
 @Preview
 @Composable
 fun EpisodeDetailScreenPreview() {
-    EpisodeDetailScreen({ })
+//    EpisodeDetailScreen({ })
 }

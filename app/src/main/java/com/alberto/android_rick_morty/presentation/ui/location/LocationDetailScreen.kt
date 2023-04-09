@@ -9,10 +9,12 @@ import com.alberto.android_rick_morty.presentation.navigation.Route
 import com.alberto.android_rick_morty.presentation.ui.components.Header
 import com.alberto.android_rick_morty.presentation.ui.components.ItemDetails
 import com.alberto.android_rick_morty.presentation.ui.location.components.LocationItems
+import com.alberto.android_rick_morty.presentation.viewmodel.LocationViewModel
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
 fun LocationDetailScreen(
+    state: LocationViewModel.LocationState,
     onNavigate: (UiEvent.Navigate) -> Unit
 ) {
     Box(
@@ -42,7 +44,13 @@ fun LocationDetailScreen(
                         horizontal = 20.dp
                     )
             ) {
-                LocationItems(items = listOf("nombre: Tierra", "tipo: Planeta", "dimension: Dimension C-137"))
+                LocationItems(
+                    items = listOf(
+                        "nombre: ${state.locationSelected?.name}",
+                        "tipo: ${state.locationSelected?.type}",
+                        "dimension: ${state.locationSelected?.dimension}"
+                    )
+                )
             }
         }
         Row(
@@ -61,5 +69,5 @@ fun LocationDetailScreen(
 @Preview
 @Composable
 fun LocationDetailScreenPreview() {
-    LocationDetailScreen({ })
+//    LocationDetailScreen({ })
 }

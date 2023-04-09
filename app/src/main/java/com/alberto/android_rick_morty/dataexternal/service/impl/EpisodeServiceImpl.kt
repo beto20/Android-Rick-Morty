@@ -13,4 +13,7 @@ class EpisodeServiceImpl @Inject constructor(
         return graphqlService.getAllEpisodes()
     }
 
+    override suspend fun getEpisodeDetails(id: String): EpisodeDomain? {
+        return graphqlService.getEpisodeDetails(id)
+    }
 }

@@ -10,14 +10,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.alberto.android_rick_morty.presentation.navigation.Route
 import com.alberto.android_rick_morty.presentation.ui.character.components.CharacterItems
 import com.alberto.android_rick_morty.presentation.ui.components.Header
 import com.alberto.android_rick_morty.presentation.ui.components.ItemDetails
+import com.alberto.android_rick_morty.presentation.viewmodel.CharacterViewModel
 import com.alberto.android_rick_morty.util.UiEvent
 
 @Composable
 fun CharacterDetailScreen(
+    state: CharacterViewModel.CharacterState,
     onNavigate: (UiEvent.Navigate) -> Unit
 ) {
     Box(
@@ -50,13 +53,17 @@ fun CharacterDetailScreen(
                     )
                     .fillMaxWidth()
             ) {
-                Text(
-                    text = "IMAGEN",
-                    color = Color.Green,
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Medium
+                AsyncImage(
+                    model = state.characterSelected?.image,
+                    contentDescription = null
                 )
+//                Text(
+//                    text = "IMAGEN",
+//                    color = Color.Green,
+//                    fontSize = 28.sp,
+//                    fontFamily = FontFamily.SansSerif,
+//                    fontWeight = FontWeight.Medium
+//                )
             }
         }
 
@@ -73,7 +80,15 @@ fun CharacterDetailScreen(
                     )
                     .fillMaxWidth()
             ) {
-                CharacterItems(items = listOf("nombre: Rick Sanchez", "estado: Vivo", "especie: Humano", "genero: Masculino", "origen: Tierra"))
+                CharacterItems(
+                    items = listOf(
+                        "nombre: ${state.characterSelected?.name}",
+                        "estado: ${state.characterSelected?.status}",
+                        "especie: ${state.characterSelected?.species}",
+                        "genero: ${state.characterSelected?.gender}",
+                        "origen: ${state.characterSelected?.origin?.name}"
+                    )
+                )
             }
         }
 
@@ -93,5 +108,5 @@ fun CharacterDetailScreen(
 @Preview
 @Composable
 fun CharacterDetailScreenPreview() {
-    CharacterDetailScreen({ })
+//    CharacterDetailScreen({ })
 }
