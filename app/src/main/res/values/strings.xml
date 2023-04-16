@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Android-Rick-Morty</string>
+    <string name="app_name">Rick y Morty</string>
 
-    <string name="title">Rick and Morty</string>
+    <string name="title">Rick y Morty</string>
     <string name="episode">Episodios</string>
     <string name="location">Locaciones</string>
     <string name="character">Personajes</string>
