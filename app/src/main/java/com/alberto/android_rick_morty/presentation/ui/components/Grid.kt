@@ -5,6 +5,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -28,6 +29,8 @@ import coil.request.ImageRequest
 import coil.size.Size
 import com.alberto.android_rick_morty.R
 import com.alberto.android_rick_morty.domain.model.BaseDomain
+import com.alberto.android_rick_morty.presentation.ui.theme.BackgroundCard
+import com.alberto.android_rick_morty.presentation.ui.theme.FontCard
 import java.util.*
 
 @Composable
@@ -73,11 +76,16 @@ fun CustomOneGrid(
         modifier = Modifier.padding(6.dp),
         elevation = 6.dp,
         shape = RoundedCornerShape(size = 15.dp),
-        border = BorderStroke(width = 2.dp, color = Color.Green),
+        border = BorderStroke(
+            width = 2.dp,
+            color = Color.Green
+        ),
     ) {
         Box {
             Image(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .background(color = BackgroundCard)
+                    .fillMaxSize(),
                 painter = validateExternalImage(item),
                 contentDescription = null,
                 contentScale = ContentScale.Crop
@@ -91,7 +99,7 @@ fun CustomOneGrid(
                         end = 10.dp,
                         top = 8.dp
                     ),
-                color = Color.Black,
+                color = FontCard,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace
             )

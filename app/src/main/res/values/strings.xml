@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Android-Rick-Morty</string>
+
+    <string name="title">Rick and Morty</string>
+    <string name="episode">Episodios</string>
+    <string name="location">Locaciones</string>
+    <string name="character">Personajes</string>
+    <string name="episode_description">En esta seccion puede ver todos y cada uno de los capitulos de la serie de todas temporadas emitidas hasta la fecha de actual, ademas de encontrar más informacion relacionado...</string>
+    <string name="location_description">En esta seccion puede ver cada una de las locaciones que se presentan en toda la serie emitida hasta la fecha de actual, ademas de encontrar más informacion relacionado...</string>
+    <string name="character_description">En esta seccion puede ver cada uno de los personajes que aparecieron en toda la serie emitida hasta la fecha de actual, ademas de encontrar más informacion relacionado...</string>
+
+    <string name="show_less">Cerrar</string>
+    <string name="show_more">Ver mas</string>
 </resources>
