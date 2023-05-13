@@ -3,7 +3,7 @@ The Rick and Morty is an application develops just for academic purposes in orde
 
 Technologies used: Kotlin, Room, Dagger Hilt, Apollo GraphQL, Jetpack Compose, SplashScreen
 
-## Instalation
+## Installation
 
 ```bash
 $ ./gradlew build
